@@ -88,7 +88,15 @@ jobs:
           cp -r ../lede/package/lean package/
           sed -i 's/https:\/\/github.com\/friendlyarm\/friendlywrt_project_luci^bb021b4b9097ad332ab40bce2a1c239d9fcf225b/https:\/\/github.com\/coolsnowwolf\/luci/' feeds.conf.default
           sed -i 's/https:\/\/git.openwrt.org\/feed\/packages.git^54266c99b2a2e37a4c01b02ae74346874db7003c/https:\/\/github.com\/coolsnowwolf\/packages/' feeds.conf.default              
-      
+            
+      - name: 自定义插件及主题。
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages
+          git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
+          git clone https://github.com/rosywrt/luci-theme-rosy
+
       - name: Update Target.mk
         run: |
           cd friendlywrt-rk3328/friendlywrt/include 
